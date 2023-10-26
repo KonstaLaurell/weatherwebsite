@@ -1,6 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
     const fetchForecastButton = document.getElementById('fetchForecast');
+    const forecastContainer = document.getElementById("forecast");
+    
     fetchForecastButton.addEventListener('click', function() {
+
+        forecastContainer.classList.remove('opened');
+        forecastContainer.innerHTML = "";
+
         const city = document.getElementById('city').value.trim();
 
         if (!city) {
@@ -36,19 +42,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 let parser = new DOMParser();
                 let xmlDoc = parser.parseFromString(data, "text/xml");
 
-                // Clear previous forecast data
-                const forecastContainer = document.getElementById("forecast");
-                forecastContainer.innerHTML = "";
-
-                // Extract temperature values
+                
                 let temperatureValues = xmlDoc.querySelector('doubleOrNilReasonTupleList').textContent.trim().split(/\s+/).map(temp => parseFloat(temp));
 
                 if (!temperatureValues.length) {
                     throw new Error("No temperature data found for the entered city.");
                 }
 
-                // Assuming multiple readings per day, split the array for each day
-                const readingsPerDay = temperatureValues.length / 10;  // Assuming 10 days of data
+                
+                const readingsPerDay = temperatureValues.length / 10;  
 
                 for (let index = 0; index < 10; index++) {
                     let dayTemperatures = temperatureValues.slice(index * readingsPerDay, (index + 1) * readingsPerDay);
@@ -64,10 +66,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     forecastContainer.appendChild(dayForecast);
                 }
                 
+               
+                forecastContainer.classList.add('opened');
+                
             })
             .catch(error => {
-                const forecastContainer = document.getElementById("forecast");
-                forecastContainer.innerHTML = error.message; // Displaying the error message to the user
+                forecastContainer.innerHTML = error.message; 
                 console.error("Error fetching or processing the data:", error);
             });
     });

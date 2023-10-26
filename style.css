@@ -16,6 +16,7 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 600px;
+
 }
 
 h1 {
@@ -26,12 +27,12 @@ h1 {
 
 ul {
     padding: 0;
-    margin: 0; /* To reset any default margin */
+    margin: 0; 
 }
 
 input, button {
     width: 100%;
-    box-sizing: border-box; /* Ensures padding and border are included in total width */
+    box-sizing: border-box; 
     border: none;
     margin-bottom: 15px;
     padding: 15px;
@@ -59,22 +60,53 @@ button:hover {
     margin-bottom: 10px;
     border-radius: 10px;
     transition: all 0.3s ease-out;
-    width: 100%; /* Made it full-width to take the full space within .container */
+    width: 100%; 
     box-sizing: border-box;
 }
 
 #forecast div:hover {
-    transform: scale(1.05);
+    transform: scale(0.97);
     background-image: linear-gradient(120deg, #8fd3f4 0%,  #84fab0 100%);
 }
 
-@media (max-width: 480px) {  /* Typically for very small devices */
+@media (max-width: 480px) {  
     .container {
-        padding: 15px; /* Reduce padding for small screens */
+        padding: 15px;
     }
 
     input, button {
-        font-size: 0.9em; /* Reduce font size for better fit */
+        font-size: 0.9em;
         padding: 10px;
     }
+}
+button:active {
+    transform: scale(0.98); 
+}
+input:focus {
+    outline: none; 
+    background-color: #e6e6e6; 
+    box-shadow: 0 0 5px rgba(0, 128, 128, 0.3); 
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#forecast {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease-out;
+}
+
+#forecast.opened {
+    max-height: 600px; 
+}
+button, input, #forecast div {
+    transition-duration: 0.3s; 
 }
