@@ -7,16 +7,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>10-Day Temperature Forecast</h1>
-    
-        <label for="city">Enter a city:</label>
-        <input type="text" id="city" placeholder="Type city name here">
-        <button id="fetchForecast">Get Forecast</button>
-    
-        <ul id="forecast"></ul>
+    <div class="page-container">
+        <div class="content-wrap">
+            <div class="container">
+                <select id="langSelector">
+                    <option value="en">English</option>
+                    <option value="es">Español (Spanish)</option>
+                    <option value="fi">Suomi (Finnish)</option>
+                    <option value="zh">中文 (Chinese)</option>
+                    <option value="sv">Svenska (Swedish)</option>
+                    <option value="no">Norsk (Norwegian)</option>
+                    <option value="da">Dansk (Danish)</option>
+                </select>
+        
+                <h1>10-Day Temperature Forecast for Scandinavian Cities</h1>
+                <label for="city">Enter a city:</label>
+                <input type="text" id="city" placeholder="Type city name here">
+                <button id="fetchForecast">Get Forecast</button>
+                <ul id="forecast"></ul>
+                <div >all data is from <a href="https://ilmatieteenlaitos.fi/">ilmatieteenlaitos.fi</a></div> 
+            </div>
+        </div>
+        
+        <footer>
+            &copy; 2023 Konsta Laurell, All rights reserved.
+        </footer>
+        <script src="javascript.js"></script>
     </div>
-    
-    <script src="javascript.js"></script>
 </body>
 </html>

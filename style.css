@@ -3,10 +3,16 @@ body {
     margin: 0;
     padding: 0;
     background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-    height: 100vh;
+}
+
+.page-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    flex: 1;
 }
 
 .container {
@@ -16,7 +22,8 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 600px;
-
+    margin: auto;
+    margin-bottom: 25px;
 }
 
 h1 {
@@ -109,4 +116,13 @@ input:focus {
 }
 button, input, #forecast div {
     transition-duration: 0.3s; 
+}
+select {
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    border: none;
+    font-family: "Comic Sans MS";
 }
